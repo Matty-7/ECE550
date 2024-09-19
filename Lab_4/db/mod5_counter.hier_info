@@ -1,0 +1,21 @@
+|mod5_counter
+clock => STATE[0]~reg0.CLK
+clock => STATE[1]~reg0.CLK
+clock => STATE[2]~reg0.CLK
+reset => STATE[0]~reg0.ACLR
+reset => STATE[1]~reg0.ACLR
+reset => STATE[2]~reg0.ACLR
+w => Mux2.IN6
+w => Mux1.IN7
+w => Mux2.IN7
+w => Mux0.IN7
+w => Mux0.IN6
+w => Mux1.IN6
+w => Mux2.IN4
+w => Mux2.IN5
+STATE[0] << STATE[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+STATE[1] << STATE[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+STATE[2] << STATE[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+count << Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+

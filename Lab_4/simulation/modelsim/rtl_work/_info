@@ -1,0 +1,54 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/jh730/Documents/ECE_550/Lab_4/simulation/modelsim
+vmod5_counter
+Z1 !s110 1726752647
+!i10b 1
+!s100 :fMFh2fMoPhJcR7Y2IBWN3
+IG`hc`14W:zJCZRi0QBloV0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1726751459
+8C:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter.v
+FC:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1726752647.000000
+!s107 C:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Lab_4|C:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+C:/Users/jh730/Documents/ECE_550/Lab_4
+Z7 tCvgOpt 0
+vmod5_counter_tb
+R1
+!i10b 1
+!s100 aeh7ComNNmV0RoOi5XElM3
+IBXVYigm=2Lh<iZX?bzSlX0
+R2
+R0
+w1726752505
+8C:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter_tb.v
+FC:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Lab_4|C:/Users/jh730/Documents/ECE_550/Lab_4/mod5_counter_tb.v|
+!i113 1
+R5
+R6
+R7
