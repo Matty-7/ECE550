@@ -1,0 +1,60 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+# do WTM_run_msim_rtl_verilog.do
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Model Technology ModelSim - Intel FPGA Edition vmap 10.5b Lib Mapping Utility 2016.10 Oct  5 2016
+# vmap work rtl_work 
+# Copying C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/jh730/Documents/ECE_550/Lab_3 {C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 08:43:15 on Sep 13,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jh730/Documents/ECE_550/Lab_3" C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5.v 
+# -- Compiling module wtm_5x5
+# -- Compiling module full_adder
+# -- Compiling module half_adder
+# 
+# Top level modules:
+# 	wtm_5x5
+# End time: 08:43:15 on Sep 13,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vlog -vlog01compat -work work +incdir+C:/Users/jh730/Documents/ECE_550/Lab_3 {C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v}
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 08:43:15 on Sep 13,2024
+# vlog -reportprogress 300 -vlog01compat -work work "+incdir+C:/Users/jh730/Documents/ECE_550/Lab_3" C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v 
+# -- Compiling module wtm_5x5_tb
+# 
+# Top level modules:
+# 	wtm_5x5_tb
+# End time: 08:43:15 on Sep 13,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# 
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  wtm_5x5_tb
+# vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs=""+acc"" wtm_5x5_tb 
+# Start time: 08:43:15 on Sep 13,2024
+# Loading work.wtm_5x5_tb
+# Loading work.wtm_5x5
+# Loading work.half_adder
+# Loading work.full_adder
+# 
+# add wave *
+# view structure
+# .main_pane.structure.interior.cs.body.struct
+# view signals
+# .main_pane.objects.interior.cs.body.tree
+# run -all
+# Test 1: A = 00000, B = 00000, Product = 0000000000 (Expected: 0000000000)
+# Test 2: A = 01111, B = 00011, Product = 0000101101 (Expected: 0000101101)
+# Test 3: A = 11001, B = 10001, Product = 0110101001 (Expected: 0110101001)
+# Test 4: A = 11111, B = 11111, Product = 1111000001 (Expected: 1111000001)
+# Test 5: A = 01010, B = 10100, Product = 0011001000 (Expected: 0011001000)
+# ** Note: $stop    : C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v(54)
+#    Time: 60 ns  Iteration: 0  Instance: /wtm_5x5_tb
+# Break in Module wtm_5x5_tb at C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v line 54
+# End time: 09:00:02 on Sep 13,2024, Elapsed time: 0:16:47
+# Errors: 0, Warnings: 0

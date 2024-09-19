@@ -1,0 +1,98 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/jh730/Documents/ECE_550/Lab_3/simulation/modelsim
+vfull_adder
+Z1 !s110 1726231395
+!i10b 1
+!s100 5hHnm1[1[_G0G74`A@2]A2
+IM4GjnoK?;7;a2;0AFXGMA3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1726194178
+Z4 8C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5.v
+Z5 FC:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5.v
+L0 213
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1726231395.000000
+Z8 !s107 C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5.v|
+Z9 !s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Lab_3|C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5.v|
+!i113 1
+Z10 o-vlog01compat -work work
+Z11 !s92 -vlog01compat -work work +incdir+C:/Users/jh730/Documents/ECE_550/Lab_3
+Z12 tCvgOpt 0
+vhalf_adder
+R1
+!i10b 1
+!s100 1NH2eTIz[LP304Bi3BT^n0
+IeN019fMDDNK1WNf1_Z;0m2
+R2
+R0
+R3
+R4
+R5
+L0 224
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+vwtm_5x5
+R1
+!i10b 1
+!s100 Q=S=><>i?eJQP3@FM:l0P0
+IbVPcA3Cof0;4oiOYN57NP1
+R2
+R0
+R3
+R4
+R5
+L0 1
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+R12
+vwtm_5x5_tb
+R1
+!i10b 1
+!s100 7RH45;DUakR?]3E7KGTk]2
+I1S?g=lS>4;3XLXOVk;lHA0
+R2
+R0
+w1726192038
+8C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v
+FC:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v
+L0 3
+R6
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Lab_3|C:/Users/jh730/Documents/ECE_550/Lab_3/wtm_5x5_tb.v|
+!i113 1
+R10
+R11
+R12
