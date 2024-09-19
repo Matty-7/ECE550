@@ -1,0 +1,75 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/jh730/Documents/ECE_550/Lab_2/simulation/qsim
+vhard_block
+Z1 !s110 1725638303
+!i10b 1
+!s100 5MkZ2oTA521b`aE?f<e3M1
+IAi<`hLfN__QJjCUC1o^ga0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+Z3 w1725638302
+Z4 84bits_RCA.vo
+Z5 F4bits_RCA.vo
+L0 404
+Z6 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z7 !s108 1725638303.000000
+Z8 !s107 4bits_RCA.vo|
+Z9 !s90 -work|work|4bits_RCA.vo|
+!i113 1
+Z10 o-work work
+Z11 tCvgOpt 0
+vRCA
+R1
+!i10b 1
+!s100 WGc<_m3J>Q><o1Oo^<9WI2
+ILQSfO0ZC1B=`f0MUOH5eT0
+R2
+R0
+R3
+R4
+R5
+L0 32
+R6
+r1
+!s85 0
+31
+R7
+R8
+R9
+!i113 1
+R10
+R11
+n@r@c@a
+vRCA_vlg_vec_tst
+R1
+!i10b 1
+!s100 Z`D=JAPfE0X7>_aNf=4Mj1
+IEb5X<PWATEm?7V;doKR6j2
+R2
+R0
+w1725638300
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+L0 30
+R6
+r1
+!s85 0
+31
+R7
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R10
+R11
+n@r@c@a_vlg_vec_tst

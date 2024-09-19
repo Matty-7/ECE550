@@ -1,0 +1,61 @@
+|RCA
+a[0] => a[0].IN1
+a[1] => a[1].IN1
+a[2] => a[2].IN1
+a[3] => a[3].IN1
+b[0] => b[0].IN1
+b[1] => b[1].IN1
+b[2] => b[2].IN1
+b[3] => b[3].IN1
+cin => cin.IN1
+sum[0] << fa:fa0.sum
+sum[1] << fa:fa1.sum
+sum[2] << fa:fa2.sum
+sum[3] << fa:fa3.sum
+cout << fa:fa3.cout
+
+
+|RCA|fa:fa0
+a => xor1.IN0
+a => and2.IN0
+b => xor1.IN1
+b => and2.IN1
+cin => sum.IN1
+cin => and1.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RCA|fa:fa1
+a => xor1.IN0
+a => and2.IN0
+b => xor1.IN1
+b => and2.IN1
+cin => sum.IN1
+cin => and1.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RCA|fa:fa2
+a => xor1.IN0
+a => and2.IN0
+b => xor1.IN1
+b => and2.IN1
+cin => sum.IN1
+cin => and1.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|RCA|fa:fa3
+a => xor1.IN0
+a => and2.IN0
+b => xor1.IN1
+b => and2.IN1
+cin => sum.IN1
+cin => and1.IN1
+sum <= sum.DB_MAX_OUTPUT_PORT_TYPE
+cout <= cout.DB_MAX_OUTPUT_PORT_TYPE
+
+
