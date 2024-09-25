@@ -4,7 +4,7 @@ Name: Jingheng Huan
 
 NetID: jh730
 
-In this project, I implemented a 32-bit ALU that supports addition and subtraction operations.
+In this project, I implemented a 32-bit Arithmetic Logic Unit (ALU) that supports various arithmetic and logical operations, including `addition`, `subtraction`, `bitwise AND`, `bitwise OR`, `logical shift left (SLL)`, and `arithmetic shift right (SRA)`.
 
 - I utilized a 32-bit Carry Lookahead Adder (CLA) to perform fast arithmetic operations. The CLA is constructed by eight 4-bit CLA modules, which enhances the speed by reducing the carry propagation delay compared to a traditional Ripple Carry Adder.
 - Subtraction is achieved by computing the two’s complement of the second operand (data_operandB). This is done by inverting data_operandB and adding one (`~data_operandB + 1`).
