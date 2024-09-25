@@ -14,7 +14,7 @@ module alu(
     output [31:0] data_result;
     output isNotEqual, isLessThan, overflow;
 
-    // 操作码的取反
+    // Invert the ctrl_ALUopcode
     wire n0, n1, n2, n3, n4;
     not (n0, ctrl_ALUopcode[0]);
     not (n1, ctrl_ALUopcode[1]);
@@ -22,7 +22,7 @@ module alu(
     not (n3, ctrl_ALUopcode[3]);
     not (n4, ctrl_ALUopcode[4]);
 
-    // 操作码的检测，生成操作使能信号
+    // Detect the ctrl_ALUopcode, generate operation enable signal
     wire op_add, op_sub, op_and, op_or, op_sll, op_sra;
 
     // op_add: 00000
@@ -43,7 +43,7 @@ module alu(
     // op_sra: 00101
     and (op_sra, n4, n3, ctrl_ALUopcode[2], n1, ctrl_ALUopcode[0]);
 
-    // 对操作数B进行选择，处理加法和减法
+    // Select the operandB for addition or subtraction
     wire [31:0] operandB_selected;
     genvar i;
     generate
@@ -55,7 +55,7 @@ module alu(
     wire carry_in;
     assign carry_in = op_sub;
 
-    // 32位先行进位加法器
+    // 32-bit CLA
     wire [31:0] sum;
     wire cout;
     cla_32bit cla32(
@@ -66,9 +66,7 @@ module alu(
         .cout(cout)
     );
 
-    // 溢出检测
-
-    // 加法溢出检测
+    // Addition overflow detection
     wire add_a31_xor_b31;
     xor (add_a31_xor_b31, data_operandA[31], data_operandB[31]); // A[31] ^ B[31]
     wire add_a31_eq_b31;
@@ -79,7 +77,7 @@ module alu(
     and (add_overflow_temp, add_a31_eq_b31, add_sum31_xor_a31);
     and (add_overflow, op_add, add_overflow_temp);
 
-    // 减法溢出检测
+    // Subtraction overflow detection
     wire sub_a31_xor_b31;
     xor (sub_a31_xor_b31, data_operandA[31], data_operandB[31]); // A[31] ^ B[31]
     wire sub_sum31_xor_a31;
@@ -88,10 +86,10 @@ module alu(
     and (sub_overflow_temp, sub_a31_xor_b31, sub_sum31_xor_a31);
     and (sub_overflow, op_sub, sub_overflow_temp);
 
-    // 总的溢出信号
+    // Total overflow signal
     or (overflow, add_overflow, sub_overflow);
 
-    // 位操作：AND 和 OR
+    // Bitwise operations: AND and OR
     wire [31:0] and_result, or_result;
     generate
         for (i = 0; i < 32; i = i + 1) begin : gen_bitwise_ops
@@ -100,9 +98,9 @@ module alu(
         end
     endgenerate
 
-    // 移位操作的实现
+    // Shift operation
 
-    // 反转的 ctrl_shiftamt 信号
+    // Inverse ctrl_shiftamt
     wire not_ctrl_shiftamt0, not_ctrl_shiftamt1, not_ctrl_shiftamt2, not_ctrl_shiftamt3, not_ctrl_shiftamt4;
     not (not_ctrl_shiftamt0, ctrl_shiftamt[0]);
     not (not_ctrl_shiftamt1, ctrl_shiftamt[1]);
@@ -110,7 +108,7 @@ module alu(
     not (not_ctrl_shiftamt3, ctrl_shiftamt[3]);
     not (not_ctrl_shiftamt4, ctrl_shiftamt[4]);
 
-    // SLL 实现
+    // SLL
     wire [31:0] sll_stage0, sll_stage1, sll_stage2, sll_stage3, sll_stage4, sll_result;
     assign sll_stage0 = data_operandA;
 
@@ -167,7 +165,7 @@ module alu(
         end
     endgenerate
 
-    // SRA 实现
+    // SRA
     wire [31:0] sra_stage0, sra_stage1, sra_stage2, sra_stage3, sra_stage4, sra_result;
     assign sra_stage0 = data_operandA;
 
@@ -224,7 +222,7 @@ module alu(
         end
     endgenerate
 
-    // 选择最终的 data_result
+    // Select the final data_result
     generate
         for (i = 0; i <32; i = i +1) begin : result_mux
             wire mux_add, mux_sub, mux_and, mux_or, mux_sll, mux_sra;
@@ -238,7 +236,7 @@ module alu(
         end
     endgenerate
 
-    // isNotEqual 信号
+    // isNotEqual
     wire sum_is_zero;
     nor (sum_is_zero, sum[0], sum[1], sum[2], sum[3], sum[4], sum[5], sum[6], sum[7],
                      sum[8], sum[9], sum[10], sum[11], sum[12], sum[13], sum[14], sum[15],
@@ -250,7 +248,7 @@ module alu(
 
     and (isNotEqual, op_sub, sum_is_not_zero);
 
-    // isLessThan 信号
+    // isLessThan
     and (isLessThan, op_sub, sum[31]);
 
 endmodule

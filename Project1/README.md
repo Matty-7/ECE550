@@ -14,10 +14,8 @@ In this project, I implemented a 32-bit Arithmetic Logic Unit (ALU) that support
 - This ALU supports `bitwise AND and OR` operations, calculated by applying the respective operations on each bit of the input operands.
 - `Logical Shift Left (SLL)`: Implements left shifting of `data_operandA` by `ctrl_shiftamt` bits, filling the vacated bits with zeros.
 - `Arithmetic Shift Right (SRA)`: Performs a right shift on `data_operandA` by `ctrl_shiftamt` bits, with the sign bit replicated to maintain the number’s sign.
-- `isNotEqual`: Indicates whether two operands are unequal, set when subtraction (op_sub) results in a non-zero outcome.
+- `isNotEqual`: Indicates whether two operands are unequal, set when subtraction (`op_sub`) results in a non-zero outcome.
 - `isLessThan`: Signals that `data_operandA` is less than `data_operandB` when the most significant bit of the subtraction result is set.
-
-``Permitted and Banned Verilog Constructs``
 
 Permitted Constructs
 
