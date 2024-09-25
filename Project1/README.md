@@ -16,3 +16,21 @@ In this project, I implemented a 32-bit Arithmetic Logic Unit (ALU) that support
 - `Arithmetic Shift Right (SRA)`: Performs a right shift on `data_operandA` by `ctrl_shiftamt` bits, with the sign bit replicated to maintain the number’s sign.
 - `isNotEqual`: Indicates whether two operands are unequal, set when subtraction (op_sub) results in a non-zero outcome.
 - `isLessThan`: Signals that `data_operandA` is less than `data_operandB` when the most significant bit of the subtraction result is set.
+
+``Permitted and Banned Verilog Constructs``
+
+Permitted Constructs
+
+	•	Ternary Assign: Allowed only when cond, high, and low are wires or input/output ports, without expressions in cond.
+	•	Primitive Instantiation: and (out, in1, in2) and other basic gate instantiations.
+	•	Bitwise NOT: Using ~.
+	•	Generate Blocks: generate if, generate for, and genvar are allowed.
+	•	RCA Usage: Ripple Carry Adders can be used to construct components, but the 32-bit adder itself should not be an RCA.
+	•	Parameters: Both parameter and localparam are allowed.
+	•	Range Expressions: Complex expressions within range specifiers, such as a[i*15+36/2-13%2].
+
+Banned Constructs
+
+	•	Behavioral Description Structures: Including if, else, for (except generate for), case.
+	•	Megafunctions: Operators like +, -, *, /, %, **, ==, >, >=, <=, &&, ||, !, <<, <<<, >>, >>> are not allowed outside of generate control or parameter expressions.
+	•	SystemVerilog: Prohibited, except when constructing DFFE.
