@@ -1,4 +1,4 @@
-Project Checkpoint1 - Simple ALU
+Project Checkpoint 1-2 - Simple ALU
 
 Name: Jingheng Huan
 
