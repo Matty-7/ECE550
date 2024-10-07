@@ -1,0 +1,8 @@
+module regfile_decoder(
+    output [31:0] out,
+    input [4:0] sel
+);
+
+    assign out = 32'b1 << sel;  
+
+endmodule

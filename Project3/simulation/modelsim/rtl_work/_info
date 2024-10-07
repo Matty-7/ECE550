@@ -1,0 +1,142 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/jh730/Documents/ECE_550/Project3/simulation/modelsim
+vdffe_ref
+!s110 1728325923
+!i10b 1
+!s100 m2?1a8:`omUTO_3UK>MQz1
+Iz?<;1Q[gf=:EXMG=1fZC21
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1728321351
+8C:/Users/jh730/Documents/ECE_550/Project3/dffe.v
+FC:/Users/jh730/Documents/ECE_550/Project3/dffe.v
+L0 1
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1728325923.000000
+!s107 C:/Users/jh730/Documents/ECE_550/Project3/dffe.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Project3|C:/Users/jh730/Documents/ECE_550/Project3/dffe.v|
+!i113 1
+Z3 o-vlog01compat -work work
+Z4 !s92 -vlog01compat -work work +incdir+C:/Users/jh730/Documents/ECE_550/Project3
+Z5 tCvgOpt 0
+vregfile
+Z6 !s110 1728325924
+!i10b 1
+!s100 FJkE<O^^fVQgc<=ILc:ZP0
+I0dHnj:TFRYAme?U3>lfI:1
+R1
+R0
+w1728321564
+8C:/Users/jh730/Documents/ECE_550/Project3/regfile.v
+FC:/Users/jh730/Documents/ECE_550/Project3/regfile.v
+L0 1
+R2
+r1
+!s85 0
+31
+Z7 !s108 1728325924.000000
+!s107 C:/Users/jh730/Documents/ECE_550/Project3/regfile.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Project3|C:/Users/jh730/Documents/ECE_550/Project3/regfile.v|
+!i113 1
+R3
+R4
+R5
+vregfile_decoder
+R6
+!i10b 1
+!s100 g<]E:QMY8]YaH2`10lIDS2
+Ii9W:aD]KI7@N0ODNTi=?d0
+R1
+R0
+w1728325411
+8C:/Users/jh730/Documents/ECE_550/Project3/regfile_decoder.v
+FC:/Users/jh730/Documents/ECE_550/Project3/regfile_decoder.v
+L0 1
+R2
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/jh730/Documents/ECE_550/Project3/regfile_decoder.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Project3|C:/Users/jh730/Documents/ECE_550/Project3/regfile_decoder.v|
+!i113 1
+R3
+R4
+R5
+vregfile_tb
+R6
+!i10b 1
+!s100 ghUe>z:z2EG>Eh>iMzTX73
+IDf_oiYj38b^8GPbkn7dCW1
+R1
+R0
+w1728323756
+8C:/Users/jh730/Documents/ECE_550/Project3/regfile_tb.v
+FC:/Users/jh730/Documents/ECE_550/Project3/regfile_tb.v
+L0 3
+R2
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/jh730/Documents/ECE_550/Project3/regfile_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Project3|C:/Users/jh730/Documents/ECE_550/Project3/regfile_tb.v|
+!i113 1
+R3
+R4
+R5
+vregfile_tristate
+R6
+!i10b 1
+!s100 97g4zUd@W?NLlQ>Ynk<J>1
+In_G]z8F55EI652O]5P^0a0
+R1
+R0
+w1728325780
+8C:/Users/jh730/Documents/ECE_550/Project3/regfile_tristate.v
+FC:/Users/jh730/Documents/ECE_550/Project3/regfile_tristate.v
+L0 1
+R2
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/jh730/Documents/ECE_550/Project3/regfile_tristate.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Project3|C:/Users/jh730/Documents/ECE_550/Project3/regfile_tristate.v|
+!i113 1
+R3
+R4
+R5
+vregister_32
+R6
+!i10b 1
+!s100 BBGSCa[daMZTiCoJa[2:20
+ISf1QPDd8^lcAfVaG]7LOA3
+R1
+R0
+w1728315201
+8C:/Users/jh730/Documents/ECE_550/Project3/register_32.v
+FC:/Users/jh730/Documents/ECE_550/Project3/register_32.v
+L0 1
+R2
+r1
+!s85 0
+31
+R7
+!s107 C:/Users/jh730/Documents/ECE_550/Project3/register_32.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/jh730/Documents/ECE_550/Project3|C:/Users/jh730/Documents/ECE_550/Project3/register_32.v|
+!i113 1
+R3
+R4
+R5
