@@ -94,34 +94,12 @@ This is the testbench module for simulating the register file. It writes and rea
 
 Features:
 
-	•	Generates clock and reset signals.
-	•	Writes the value 32'h0000DEAD into each register and checks that it can be read back correctly, except for register 0, which is always 0.
-	•	Tracks and reports any errors during the simulation.
-
-How to Run the Simulation
-
-To simulate the design, you can use a Verilog simulator such as ModelSim or any other preferred simulator. The testbench (regfile_tb) automates the testing of the register file.
-
-Steps:
-
-	1.	Compile all Verilog files:
-	•	dffe_ref.v
-	•	regfile.v
-	•	regfile_decoder.v
-	•	regfile_tristate.v
-	•	register_32.v
-	•	regfile_tb.v
-	2.	Run the simulation with the testbench regfile_tb.
-	3.	Check the output to ensure there are no errors.
+- Generates clock and reset signals.
+- Writes the value 32'h0000DEAD into each register and checks that it can be read back correctly, except for register 0, which is always 0.
+- Tracks and reports any errors during the simulation.
 
 Expected Behavior
 
-	•	Register 0 always returns 0, regardless of any write operation.
-	•	All other registers store and return the values written to them.
-	•	The testbench will report an error if any register does not behave as expected.
-
-Potential Improvements
-
-	•	Expand the testbench to include additional edge cases such as testing simultaneous read and write operations.
-	•	Introduce parameterization for more flexibility (e.g., different register widths or depths).
-	•	Add support for pipelining to increase clock frequency in larger designs.
+- Register 0 always returns 0, regardless of any write operation.
+- All other registers store and return the values written to them.
+- The testbench will report an error if any register does not behave as expected.
