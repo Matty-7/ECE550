@@ -1,0 +1,12 @@
+|led_test
+led_high[0] << led_high[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led_high[1] << led_high[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+led_low[0] << Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+led_low[1] << Decoder0.DB_MAX_OUTPUT_PORT_TYPE
+clk => led_high[0]~reg0.CLK
+clk => led_high[1]~reg0.CLK
+rst_n => led_high[0]~reg0.ACLR
+rst_n => led_high[1]~reg0.ACLR
+s0 => Decoder0.IN0
+
+
