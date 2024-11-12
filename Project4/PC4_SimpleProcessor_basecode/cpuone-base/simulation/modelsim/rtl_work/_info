@@ -1,0 +1,231 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/simulation/modelsim
+valu
+Z1 !s110 1730748540
+!i10b 1
+!s100 CM2POFHhm`MRQRPIcjMQG0
+IdQ^oNBn:C>F5W=I[?Y6oE0
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1730080900
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/alu.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/alu.v
+L0 1
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1730748539.000000
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/alu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/alu.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base
+Z7 tCvgOpt 0
+vcontrol
+Z8 !s110 1730748539
+!i10b 1
+!s100 f=kAeIROP8=hb]UhHaTYH0
+I;`XmMiR1VAU[211:elSK@1
+R2
+R0
+Z9 w1730745892
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/control.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/control.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/control.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/control.v|
+!i113 1
+R5
+R6
+R7
+vdffe_ref
+R1
+!i10b 1
+!s100 zK<]QbNR3bGDDchN;[heE2
+I3Gd>12zl`fh:bVNZf>IRb1
+R2
+R0
+R9
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dffe.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dffe.v
+L0 1
+R3
+r1
+!s85 0
+31
+Z10 !s108 1730748540.000000
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dffe.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dffe.v|
+!i113 1
+R5
+R6
+R7
+vdiv4_clk
+R1
+!i10b 1
+!s100 [HFfA@STK631MbU:e_[GW3
+I06[XH;U10=33:HIT4oF^60
+R2
+R0
+Z11 w1730745893
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/div4_clk.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/div4_clk.v
+L0 1
+R3
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/div4_clk.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/div4_clk.v|
+!i113 1
+R5
+R6
+R7
+vdmem
+R8
+!i10b 1
+!s100 Ig2U5z`UQ`aKkLjgP8hjc1
+I8I[KXcRS>?>Vcn`CFHNc31
+R2
+R0
+w1730746652
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dmem.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dmem.v
+Z12 L0 40
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dmem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/dmem.v|
+!i113 1
+R5
+R6
+R7
+vimem
+R1
+!i10b 1
+!s100 R:nTGURZnC9;500L_M52i0
+I34@PmmE>[Z`SVm@d56kHf0
+R2
+R0
+w1730746661
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/imem.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/imem.v
+R12
+R3
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/imem.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/imem.v|
+!i113 1
+R5
+R6
+R7
+vprocessor
+R8
+!i10b 1
+!s100 Qd>gd=0oZXO3MT:ZL@@IJ1
+I6lWFK4L3maU19mU8hG4k`2
+R2
+R0
+w1730745897
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/processor.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/processor.v
+L0 50
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/processor.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/processor.v|
+!i113 1
+R5
+R6
+R7
+vProcessor_tb
+!s110 1730748541
+!i10b 1
+!s100 ;]@IKVoEF]E?9FQm:HV6Z3
+I6AHCA@Xi0nIRfEJM7KA4J2
+R2
+R0
+w1730220638
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/Processor_tb.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/Processor_tb.v
+L0 4
+R3
+r1
+!s85 0
+31
+R10
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/Processor_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/Processor_tb.v|
+!i113 1
+R5
+R6
+R7
+n@processor_tb
+vregfile
+R8
+!i10b 1
+!s100 dYP;7:ggOj]ITl>2Bo<Dn3
+I@@5EgoSlA5I4444CME=Qm1
+R2
+R0
+w1730236308
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/regfile.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/regfile.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/regfile.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/regfile.v|
+!i113 1
+R5
+R6
+R7
+vskeleton
+R8
+!i10b 1
+!s100 :;fT19T58V?=Kef=cISzE0
+I^`mNWa^b1A_HZ]P<AV?V?2
+R2
+R0
+R11
+8C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/skeleton.v
+FC:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/skeleton.v
+L0 12
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/skeleton.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base|C:/Users/xs90/Desktop/ECE550_PC4/PC4_SimpleProcessor_basecode/cpuone-base/skeleton.v|
+!i113 1
+R5
+R6
+R7

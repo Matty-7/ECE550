@@ -1,0 +1,36 @@
+module regfile(
+	clock, ctrl_writeEnable, ctrl_reset, ctrl_writeReg,
+	ctrl_readRegA, ctrl_readRegB, data_writeReg, data_readRegA,
+	data_readRegB
+);
+	input clock, ctrl_writeEnable, ctrl_reset;
+	input [4:0] ctrl_writeReg, ctrl_readRegA, ctrl_readRegB;
+	input [31:0] data_writeReg;
+	output [31:0] data_readRegA, data_readRegB;
+
+	reg[31:0] registers[31:0];
+
+	integer i;
+	always @(posedge clock or posedge ctrl_reset)
+	begin
+		if(ctrl_reset)
+		begin
+			for(i = 0; i < 32; i = i + 1)
+			begin
+				registers[i] = 32'd0;
+			end
+		end
+		else
+		begin
+			// Ignore writes to $r0 and handle $r30 as needed
+			if(ctrl_writeEnable && ctrl_writeReg != 5'd0)
+			begin
+				registers[ctrl_writeReg] = data_writeReg;
+			end
+		end
+	end
+
+	assign data_readRegA = (~ctrl_readRegA[4] & ~ctrl_readRegA[3] & ~ctrl_readRegA[2] & ~ctrl_readRegA[1] & ~ctrl_readRegA[0]) ? 32'd0 : registers[ctrl_readRegA];
+    assign data_readRegB = (~ctrl_readRegB[4] & ~ctrl_readRegB[3] & ~ctrl_readRegB[2] & ~ctrl_readRegB[1] & ~ctrl_readRegB[0]) ? 32'd0 : registers[ctrl_readRegB];
+
+endmodule
