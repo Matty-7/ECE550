@@ -3,7 +3,7 @@ module PS2_Interface(
     inout ps2_clock, ps2_data,
     output ps2_key_pressed,
     output [7:0] ps2_key_data,
-    output [7:0] last_data_received,
+    output reg [7:0] last_data_received,
 );
     // Internal Registers
     reg [7:0] ascii_data; // Internal register to store the mapped ASCII value

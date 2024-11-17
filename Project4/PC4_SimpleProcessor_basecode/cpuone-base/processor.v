@@ -95,31 +95,18 @@ module processor(
   wire [31:0] pc;
   wire [31:0] pc_next;
 
-  wire [31:0] pc_increment;
-  assign pc_increment = 32'b1;
+  //wire [31:0] pc_increment;
+  //assign pc_increment = 32'b1;
 
-  wire [31:0] pc_plus_one;
+  //wire [31:0] pc_plus_one;
 
   alu pc_alu (
     .data_operandA(pc),
-    .data_operandB(pc_increment),
+    .data_operandB(32'd1),
     .ctrl_ALUopcode(5'b00000),
     .ctrl_shiftamt(5'b0),
-    .data_result(pc_plus_one),
-    .isNotEqual(),
-    .isLessThan(),
-    .overflow()
+    .data_result(pc_next)
   );
-
-  wire reset_not;
-  assign reset_not = ~reset;
-
-  genvar i;
-  generate
-    for (i = 0; i < 32; i = i + 1) begin: pc_next_logic
-      assign pc_next[i] = pc_plus_one[i] & reset_not;
-    end
-  endgenerate
 
   genvar j;
   generate
@@ -129,7 +116,7 @@ module processor(
         .d(pc_next[j]),
         .clk(clock),
         .en(1'b1),
-        .clr(1'b0)
+        .clr(reset)
       );
     end
   endgenerate
@@ -178,9 +165,16 @@ module processor(
   );
   assign is_add  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] & ~alu_op[0];
   assign is_sub  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] & alu_op[0];
-
-  // ALU
+  
   wire is_overflow, is_not_equal, is_less_than;
+  // Regfile
+  assign ctrl_readRegA = rs;
+  assign ctrl_readRegB = is_sw ? rd : rt;
+  assign ctrl_writeReg = (is_add | is_addi | is_sub) ? (is_overflow ? 5'b11110 : rd) : rd;
+  assign ctrl_writeEnable = Rwe;
+  
+  // ALU
+  
   wire [31:0] alu_data_operandA, alu_data_operandB, alu_output;
   wire [4:0] ALUop;
   assign alu_data_operandA = data_readRegA;
@@ -196,12 +190,6 @@ module processor(
     .isLessThan(is_less_than),
     .overflow(is_overflow)
   );
-
-  // Regfile
-  assign ctrl_readRegA = rs;
-  assign ctrl_readRegB = is_sw ? rd : rt;
-  assign ctrl_writeReg = (is_add | is_addi | is_sub) ? (is_overflow ? 5'b11110 : rd) : rd;
-  assign ctrl_writeEnable = Rwe;
 
   // DMEM
   assign address_dmem = alu_output[11:0];
