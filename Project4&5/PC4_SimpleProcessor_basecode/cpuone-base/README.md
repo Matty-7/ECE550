@@ -5,7 +5,7 @@
 
 We implemented a single-cycle 32-bit processor that integrates the register file and ALU units, generating the necessary data memory (dmem) and instruction memory (imem) files through Quartus syncram components. The design supports basic R-type (`add`, `sub`, `and`, `or`, `sll`, `sra`) and I-type (`addi`, `lw`, `sw`) instructions with a 50 MHz clock.
 
-## Bug!!!
+## Bug!!! (Solved)
 After hours of debugging and testing, even with help from TA Yunfan and TA Alleu, we still cannot handle overflow properly. We believe the logic of our code is correct and the testbench simulation works fine. However, it cannot pass all the overflow cases on gradescope.
 
 ## Module Descriptions
