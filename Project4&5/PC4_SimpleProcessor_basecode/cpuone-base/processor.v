@@ -91,11 +91,13 @@ module processor(
   input [31:0] data_readRegA, data_readRegB;
 
   /* YOUR CODE STARTS HERE */
+  wire [31:0] instruction;
+  assign instruction = q_imem;
 
+  // PC Logic
   wire [31:0] pc;
   wire [31:0] pc_next;
 
-  // Program Counter Logic
   wire [31:0] pc_plus_one;
   assign pc_plus_one = pc + 32'd1;
 
@@ -121,9 +123,7 @@ module processor(
 
   // Instruction Fetch
   assign address_imem = pc[11:0];
-  wire [31:0] instruction;
-  assign instruction = q_imem;
-
+  
   wire [4:0] opcode;
   wire [4:0] rd, rs, rt;
   wire [4:0] shamt, alu_op;
@@ -180,16 +180,6 @@ module processor(
 
   wire is_overflow, is_not_equal, is_less_than;
 
-  // Regfile
-  assign ctrl_readRegA = (is_bne | is_blt) ? rd : (is_bex ? 5'b11110 : rs);
-  assign ctrl_readRegB = (is_bne | is_blt) ? rs : (is_sw ? rd : rt);
-
-  assign ctrl_writeReg = is_setx ? 5'b11110 : // $r30
-                         is_jal ? 5'b11111 :  // $r31
-                         (is_overflow ? 5'b11110 : rd);
-
-  assign ctrl_writeEnable = Rwe;
-
   // ALU
   wire [31:0] alu_data_operandA, alu_data_operandB, alu_output;
   wire [4:0] ALUop;
@@ -198,8 +188,8 @@ module processor(
   assign alu_data_operandB = ALUinB ? imm_ext : data_readRegB;
 
   assign ALUop = is_R ? alu_op :
-                 (is_bne | is_blt) ? 5'b00001 : // Subtract for comparison
-                 (is_addi | is_lw | is_sw) ? 5'b00000 : // Addition
+                 (is_bne | is_blt) ? 5'b00001 : 
+                 (is_addi | is_lw | is_sw) ? 5'b00000 :
                  5'b00000;
 
   alu alu_unit (
@@ -213,12 +203,21 @@ module processor(
     .overflow(is_overflow)
   );
 
+  // Regfile
+  assign ctrl_readRegA = (is_bne | is_blt) ? rd : (is_bex ? 5'b11110 : rs);
+  assign ctrl_readRegB = (is_bne | is_blt) ? rs : (is_sw ? rd : rt);
+
+  assign ctrl_writeReg = is_setx ? 5'b11110 : // $r30
+                         is_jal ? 5'b11111 :  // $r31
+                         (is_overflow ? 5'b11110 : rd);
+
+  assign ctrl_writeEnable = Rwe;
+
   // DMEM
   assign address_dmem = alu_output[11:0];
   assign data = data_readRegB;
   assign wren = DMWe;
 
-  // Data to write to regfile
   assign data_writeReg = is_setx ? jump_target :
                          is_jal ? pc_plus_one :
                          is_lw ? q_dmem :
