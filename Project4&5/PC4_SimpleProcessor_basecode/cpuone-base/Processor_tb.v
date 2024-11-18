@@ -32,7 +32,7 @@ module Processor_tb;
         monitor_signals();
 
         // Wait for some cycles to ensure instructions run correctly
-        #5000;   // 100 full cycles
+        #10000;   // Increased time to test Project 5 instructions
 
         $stop;   // Stop the simulation
     end
@@ -42,13 +42,14 @@ module Processor_tb;
         integer i;
         begin
             // Print header for easier reading
-            $display("Time\tPC\tInstruction\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tMem[1]\tMem[2]");
+            $display("Time\tPC\tInstruction\tR0\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tR30\tR31\tMem[1]\tMem[2]");
             
             // Use $monitor to track the values of the internal registers and memory
-            $monitor("%0d\t%h\t%h\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d",
+            $monitor("%0d\t%h\t%h\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d",
                 $time, 
                 dut.my_processor.pc,         // PC value
                 dut.q_imem,                  // Current instruction
+                dut.my_regfile.registers[0], // R0
                 dut.my_regfile.registers[1], // R1
                 dut.my_regfile.registers[2], // R2
                 dut.my_regfile.registers[3], // R3
@@ -58,8 +59,10 @@ module Processor_tb;
                 dut.my_regfile.registers[7], // R7
                 dut.my_regfile.registers[8], // R8
                 dut.my_regfile.registers[9], // R9
-                dut.my_dmem.q[1],            // Memory location 1
-                dut.my_dmem.q[2]             // Memory location 2
+                dut.my_regfile.registers[30], // R30 ($rstatus)
+                dut.my_regfile.registers[31], // R31 ($ra)
+                dut.my_dmem.memory[1],       // Memory location 1
+                dut.my_dmem.memory[2]        // Memory location 2
             );
         end
     endtask
