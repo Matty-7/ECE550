@@ -100,6 +100,16 @@ module processor(
 
   //wire [31:0] pc_plus_one;
 
+   // PC:5 Program Counter Logic
+  wire [31:0] pc_plus_one;
+  assign pc_plus_one = pc + 32'd1;
+
+  wire [31:0] jump_target;
+  assign jump_target = {5'b0, q_imem[26:0]};
+
+  wire [31:0] branch_target;
+  assign branch_target = pc_plus_one + {{15{q_imem[16]}}, q_imem[16:0]};
+
   alu pc_alu (
     .data_operandA(pc),
     .data_operandB(32'd1),
@@ -121,8 +131,8 @@ module processor(
     end
   endgenerate
 
+  // Instruction Fetch
   assign address_imem = pc[11:0];
-
   wire [31:0] instruction;
   assign instruction = q_imem;
 
@@ -145,9 +155,9 @@ module processor(
   assign imm_ext[31:17] = {15{immediate[16]}};
 
   wire Rwe, Rdst, ALUinB, DMWe, Rwd, JP, BR, ALUop_ctl;
-  wire is_R, is_addi, is_sw, is_lw, is_add, is_sub;
+  wire is_R, is_addi, is_sw, is_lw, is_j, is_jal, is_jr, is_bex, is_setx;
 
-  // Control
+
   control control_unit (
     .opcode(opcode),
     .Rwe(Rwe),
@@ -161,8 +171,14 @@ module processor(
     .is_R(is_R),
     .is_addi(is_addi),
     .is_sw(is_sw),
-    .is_lw(is_lw)
+    .is_lw(is_lw),
+    .is_j(is_j),
+    .is_jal(is_jal),
+    .is_jr(is_jr),
+    .is_bex(is_bex),
+    .is_setx(is_setx)
   );
+
   assign is_add  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] & ~alu_op[0];
   assign is_sub  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] & alu_op[0];
   
@@ -180,6 +196,7 @@ module processor(
   assign alu_data_operandA = data_readRegA;
   assign alu_data_operandB = ALUinB ? imm_ext : data_readRegB;
   assign ALUop = is_R ? alu_op : ALUop_ctl ? 5'b00001 : 5'b00000;
+
   alu alu_unit (
     .data_operandA(alu_data_operandA),
     .data_operandB(alu_data_operandB),
@@ -197,4 +214,5 @@ module processor(
   assign wren = DMWe;
 
   assign data_writeReg = is_lw ? q_dmem : (is_overflow ? (is_add ? 32'd1 : is_addi ? 32'd2 : is_sub ? 32'd3 : alu_output) : alu_output);
+  assign pc_next = JP ? (is_jr ? data_readRegA : jump_target) : pc_plus_one;
 endmodule
