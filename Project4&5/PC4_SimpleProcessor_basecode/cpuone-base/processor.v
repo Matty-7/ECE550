@@ -231,7 +231,7 @@ module processor(
   );
 
   // Regfile
-  assign ctrl_readRegA = (is_bne | is_blt) ? rd : (is_bex ? 5'b11110 : rs);
+  assign ctrl_readRegA = (is_bne | is_blt | is_jr) ? rd : (is_bex ? 5'b11110 : rs);
   assign ctrl_readRegB = (is_bne | is_blt) ? rs : (is_sw ? rd : rt);
 
   assign ctrl_writeReg = is_setx ? 5'b11110 : // $r30
