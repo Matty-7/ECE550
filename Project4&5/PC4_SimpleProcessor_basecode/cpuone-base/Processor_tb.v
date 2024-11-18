@@ -45,7 +45,7 @@ module Processor_tb;
             $display("Time\tPC\tInstruction\tR0\tR1\tR2\tR3\tR4\tR5\tR6\tR7\tR8\tR9\tR30\tR31\tMem[1]\tMem[2]");
             
             // Use $monitor to track the values of the internal registers and memory
-            $monitor("%0d\t%h\t%h\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d",
+            $monitor("%0d\t%h\t%h\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d\t%d",
                 $time, 
                 dut.my_processor.pc,         // PC value
                 dut.q_imem,                  // Current instruction
