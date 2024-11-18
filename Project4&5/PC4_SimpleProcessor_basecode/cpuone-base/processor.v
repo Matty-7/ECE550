@@ -99,13 +99,40 @@ module processor(
   wire [31:0] pc_next;
 
   wire [31:0] pc_plus_one;
-  assign pc_plus_one = pc + 32'd1;
+  wire unused_overflow_pc_plus_one, unused_isNotEqual_pc_plus_one, unused_isLessThan_pc_plus_one;
+
+  alu alu_pc_plus_one (
+      .data_operandA(pc),
+      .data_operandB(32'd1),
+      .ctrl_ALUopcode(5'b00000), // Opcode for addition
+      .ctrl_shiftamt(5'b00000),
+      .data_result(pc_plus_one),
+      .isNotEqual(unused_isNotEqual_pc_plus_one),
+      .isLessThan(unused_isLessThan_pc_plus_one),
+      .overflow(unused_overflow_pc_plus_one)
+  );
 
   wire [31:0] jump_target;
   assign jump_target = {5'b0, instruction[26:0]};
 
+    // ALU instance for branch_target
+  wire [31:0] branch_offset;
   wire [31:0] branch_target;
-  assign branch_target = pc_plus_one + {{15{instruction[16]}}, instruction[16:0]};
+  wire unused_overflow_branch_target, unused_isNotEqual_branch_target, unused_isLessThan_branch_target;
+
+  // Sign-extend the immediate value
+  assign branch_offset = {{15{instruction[16]}}, instruction[16:0]};
+
+  alu alu_branch_target (
+      .data_operandA(pc_plus_one),
+      .data_operandB(branch_offset),
+      .ctrl_ALUopcode(5'b00000), // Opcode for addition
+      .ctrl_shiftamt(5'b00000),
+      .data_result(branch_target),
+      .isNotEqual(unused_isNotEqual_branch_target),
+      .isLessThan(unused_isLessThan_branch_target),
+      .overflow(unused_overflow_branch_target)
+  );
 
   // PC Register
   genvar j;
@@ -226,11 +253,25 @@ module processor(
                                         is_sub ? 32'd3 : alu_output) :
                          alu_output;
 
-  // Branch Logic
-  wire branch_taken;
+    // ALU instance for data_readRegA comparison
+  wire isNotEqual_zero;
+  wire unused_overflow_compare_zero, unused_isLessThan_compare_zero;
+
+  alu alu_compare_zero (
+      .data_operandA(data_readRegA),
+      .data_operandB(32'd0),
+      .ctrl_ALUopcode(5'b00001), // Opcode for subtraction
+      .ctrl_shiftamt(5'b00000),
+      .data_result(), // We don't need the result
+      .isNotEqual(isNotEqual_zero),
+      .isLessThan(unused_isLessThan_compare_zero),
+      .overflow(unused_overflow_compare_zero)
+  );
+
+  // Update branch_taken logic
   assign branch_taken = (is_bne & is_not_equal) |
                         (is_blt & is_less_than) |
-                        (is_bex & (data_readRegA != 32'b0));
+                        (is_bex & isNotEqual_zero);
 
   // PC Update Logic
   assign pc_next = is_jr ? data_readRegA :
