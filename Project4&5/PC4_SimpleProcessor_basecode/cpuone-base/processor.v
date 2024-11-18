@@ -95,29 +95,17 @@ module processor(
   wire [31:0] pc;
   wire [31:0] pc_next;
 
-  //wire [31:0] pc_increment;
-  //assign pc_increment = 32'b1;
-
-  //wire [31:0] pc_plus_one;
-
-   // PC:5 Program Counter Logic
+  // Program Counter Logic
   wire [31:0] pc_plus_one;
   assign pc_plus_one = pc + 32'd1;
 
   wire [31:0] jump_target;
-  assign jump_target = {5'b0, q_imem[26:0]};
+  assign jump_target = {5'b0, instruction[26:0]};
 
   wire [31:0] branch_target;
-  assign branch_target = pc_plus_one + {{15{q_imem[16]}}, q_imem[16:0]};
+  assign branch_target = pc_plus_one + {{15{instruction[16]}}, instruction[16:0]};
 
-  alu pc_alu (
-    .data_operandA(pc),
-    .data_operandB(32'd1),
-    .ctrl_ALUopcode(5'b00000),
-    .ctrl_shiftamt(5'b0),
-    .data_result(pc_next)
-  );
-
+  // PC Register
   genvar j;
   generate
     for (j = 0; j < 32; j = j + 1) begin: pc_register
@@ -155,9 +143,9 @@ module processor(
   assign imm_ext[31:17] = {15{immediate[16]}};
 
   wire Rwe, Rdst, ALUinB, DMWe, Rwd, JP, BR, ALUop_ctl;
-  wire is_R, is_addi, is_sw, is_lw, is_j, is_jal, is_jr, is_bex, is_setx;
+  wire is_R, is_addi, is_sw, is_lw, is_j, is_bne, is_jal, is_jr, is_blt, is_bex, is_setx;
 
-
+  // Control Unit
   control control_unit (
     .opcode(opcode),
     .Rwe(Rwe),
@@ -173,29 +161,46 @@ module processor(
     .is_sw(is_sw),
     .is_lw(is_lw),
     .is_j(is_j),
+    .is_bne(is_bne),
     .is_jal(is_jal),
     .is_jr(is_jr),
+    .is_blt(is_blt),
     .is_bex(is_bex),
     .is_setx(is_setx)
   );
 
+  // Identify R-type operations
+  wire is_add, is_sub, is_and, is_or, is_sll, is_sra;
   assign is_add  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] & ~alu_op[0];
-  assign is_sub  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] & alu_op[0];
-  
+  assign is_sub  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] & ~alu_op[1] &  alu_op[0];
+  assign is_and  = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] &  alu_op[1] & ~alu_op[0];
+  assign is_or   = is_R & ~alu_op[4] & ~alu_op[3] & ~alu_op[2] &  alu_op[1] &  alu_op[0];
+  assign is_sll  = is_R & ~alu_op[4] & ~alu_op[3] &  alu_op[2] & ~alu_op[1] & ~alu_op[0];
+  assign is_sra  = is_R & ~alu_op[4] & ~alu_op[3] &  alu_op[2] & ~alu_op[1] &  alu_op[0];
+
   wire is_overflow, is_not_equal, is_less_than;
+
   // Regfile
-  assign ctrl_readRegA = rs;
-  assign ctrl_readRegB = is_sw ? rd : rt;
-  assign ctrl_writeReg = (is_add | is_addi | is_sub) ? (is_overflow ? 5'b11110 : rd) : rd;
+  assign ctrl_readRegA = (is_bne | is_blt) ? rd : (is_bex ? 5'b11110 : rs);
+  assign ctrl_readRegB = (is_bne | is_blt) ? rs : (is_sw ? rd : rt);
+
+  assign ctrl_writeReg = is_setx ? 5'b11110 : // $r30
+                         is_jal ? 5'b11111 :  // $r31
+                         (is_overflow ? 5'b11110 : rd);
+
   assign ctrl_writeEnable = Rwe;
-  
+
   // ALU
-  
   wire [31:0] alu_data_operandA, alu_data_operandB, alu_output;
   wire [4:0] ALUop;
+
   assign alu_data_operandA = data_readRegA;
   assign alu_data_operandB = ALUinB ? imm_ext : data_readRegB;
-  assign ALUop = is_R ? alu_op : ALUop_ctl ? 5'b00001 : 5'b00000;
+
+  assign ALUop = is_R ? alu_op :
+                 (is_bne | is_blt) ? 5'b00001 : // Subtract for comparison
+                 (is_addi | is_lw | is_sw) ? 5'b00000 : // Addition
+                 5'b00000;
 
   alu alu_unit (
     .data_operandA(alu_data_operandA),
@@ -213,6 +218,25 @@ module processor(
   assign data = data_readRegB;
   assign wren = DMWe;
 
-  assign data_writeReg = is_lw ? q_dmem : (is_overflow ? (is_add ? 32'd1 : is_addi ? 32'd2 : is_sub ? 32'd3 : alu_output) : alu_output);
-  assign pc_next = JP ? (is_jr ? data_readRegA : jump_target) : pc_plus_one;
+  // Data to write to regfile
+  assign data_writeReg = is_setx ? jump_target :
+                         is_jal ? pc_plus_one :
+                         is_lw ? q_dmem :
+                         is_overflow ? (is_add ? 32'd1 :
+                                        is_addi ? 32'd2 :
+                                        is_sub ? 32'd3 : alu_output) :
+                         alu_output;
+
+  // Branch Logic
+  wire branch_taken;
+  assign branch_taken = (is_bne & is_not_equal) |
+                        (is_blt & is_less_than) |
+                        (is_bex & (data_readRegA != 32'b0));
+
+  // PC Update Logic
+  assign pc_next = is_jr ? data_readRegA :
+                   (is_j | is_jal | (is_bex & branch_taken)) ? jump_target :
+                   (BR & branch_taken) ? branch_target :
+                   pc_plus_one;
+
 endmodule
