@@ -1,17 +1,14 @@
-# Project Checkpoint 4
-## Simple Processor -- R-type and I-type
+# Project Checkpoint 5
+## Simple Processor -- R-type, I-type, and J-type
 
 ## Name and NetID: Xingyu Shen (xs90) and Jingheng Huan (jh730)
 
-We implemented a single-cycle 32-bit processor that integrates the register file and ALU units, generating the necessary data memory (dmem) and instruction memory (imem) files through Quartus syncram components. The design supports basic R-type (`add`, `sub`, `and`, `or`, `sll`, `sra`) and I-type (`addi`, `lw`, `sw`) instructions with a 50 MHz clock.
-
-## Bug!!! (Solved)
-After hours of debugging and testing, even with help from TA Yunfan and TA Alleu, we still cannot handle overflow properly. We believe the logic of our code is correct and the testbench simulation works fine. However, it cannot pass all the overflow cases on gradescope.
+We implemented a single-cycle 32-bit processor that integrates the register file and ALU units, generating the necessary data memory (`dmem`) and instruction memory (`imem`) files through Quartus syncram components. The design supports basic R-type (`add`, `sub`, `and`, `or`, `sll`, `sra`), I-type (`addi`, `lw`, `sw`), and J-type instructions (`j`, `bne`, `jal`, `jr`, `blt`, `bex`, `setx`) with a 50 MHz clock.
 
 ## Module Descriptions
 
 ### 1. control.v
-   - This module decodes the opcode and generates control signals for the processor. It determines whether the instruction is an `R-type` or `I-type` and sets the control signals for register writes, ALU inputs, and memory operations.
+   - This module decodes the opcode and generates control signals for the processor. It determines whether the instruction is a `R-type` or `I-type` or `J-type` and sets the control signals for register writes, ALU inputs, and memory operations.
 
 ### 2. dffe.v
    - This module implements a `D flip-flop` with enable and clear functionality. It is used to store the`program counter (PC)` value to update correctly on clock edges while allowing for reset.
@@ -23,7 +20,7 @@ After hours of debugging and testing, even with help from TA Yunfan and TA Alleu
    - The instruction memory module is also implemented using a `single-port ROM`. It reads 32-bit instructions from a specified address and is initialized with a `.mif file` containing the program instructions.
 
 ### 5. processor.v
-   - This is the main processor module that integrates all components. It handles instruction `fetching`, `decoding`, and `execution`. The processor uses a program counter to fetch instructions from `imem`, decodes them, and executes the corresponding operations using the ALU and `regfile`.
+   - This is the main processor module that integrates all components. It handles instruction `fetching`, `decoding`, and `execution`. Now it can also support for `J-type` instructions. The processor uses a program counter to fetch instructions from `imem`, decodes them, and executes the corresponding operations using the ALU and `regfile`.
 
 ### 6. alu.v
    - The ALU module performs arithmetic and logical operations on two 32-bit inputs. It supports operations such as `add`, `sub`, `and`, `or`, `sll`, and `sra`.
@@ -36,3 +33,11 @@ After hours of debugging and testing, even with help from TA Yunfan and TA Alleu
 
 ### 9. div4_clk.v
    - Make 1/4 the frequency of the original clock signal to make processor and register file work slower to match the speed of the memory components, who use the original clock.
+
+## Testing
+
+### Each module was individually tested with edge cases to verify functionality.
+
+### The processor was tested with pre-written programs loaded into `imem.mif` and verified against expected results in `dmem`.
+
+### `ModelSim` was used for waveforms, and `Quartus` for hardware synthesis.
